@@ -12,6 +12,8 @@ import {
 import { Toaster } from 'sonner';
 
 import { AuthPage } from '@/routes/auth-page';
+import { ChecklistPage, NewChecklistPage } from '@/routes/checklist-page';
+import { ChecklistsPage } from '@/routes/checklists-page';
 import { GroupPage } from '@/routes/group-page';
 import { GroupsPage } from '@/routes/groups-page';
 import { InvitePage } from '@/routes/invite-page';
@@ -51,7 +53,7 @@ function RouteEffects() {
   const location = useLocation();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
-    document.title = `${location.pathname.startsWith('/groups') ? 'Группы' : location.pathname.startsWith('/invite') ? 'Приглашение' : location.pathname.startsWith('/login') ? 'Вход' : location.pathname.startsWith('/register') ? 'Регистрация' : 'Задачи'} — Рядом`;
+    document.title = `${location.pathname.startsWith('/checklists') ? 'Чеклисты' : location.pathname.startsWith('/groups') ? 'Группы' : location.pathname.startsWith('/invite') ? 'Приглашение' : location.pathname.startsWith('/login') ? 'Вход' : location.pathname.startsWith('/register') ? 'Регистрация' : 'Задачи'} — Рядом`;
   }, [location.pathname]);
   return null;
 }
@@ -75,6 +77,10 @@ function AppContent() {
               <Route path='tasks/new' element={<NewTaskPage />} />
               <Route path='tasks/:id' element={<TaskPage />} />
               <Route path='tasks/:id/edit' element={<TaskPage edit />} />
+              <Route path='checklists' element={<ChecklistsPage />} />
+              <Route path='checklists/new' element={<NewChecklistPage />} />
+              <Route path='checklists/:id' element={<ChecklistPage />} />
+              <Route path='checklists/:id/edit' element={<ChecklistPage edit />} />
               <Route path='groups' element={<GroupsPage />} />
               <Route path='groups/:id' element={<GroupPage />} />
               <Route path='invite/:token' element={<InvitePage />} />

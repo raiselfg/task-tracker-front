@@ -3,6 +3,24 @@ import test from 'node:test';
 import { credentialsSchema } from '../src/auth/lib/form-schema.ts';
 import { groupFormSchema } from '../src/groups/lib/form-schema.ts';
 import { taskFormSchema } from '../src/tasks/lib/form-schema.ts';
+import {
+  checklistFormSchema,
+  checklistTitleSchema,
+} from '../src/checklists/lib/form-schema.ts';
+
+test('checklist and item forms require a nonblank title and preserve the chosen group', () => {
+  for (const title of ['', ' \n\t']) {
+    assert.equal(checklistTitleSchema.safeParse({ title }).success, false);
+    assert.equal(
+      checklistFormSchema.safeParse({ title, group_id: '' }).success,
+      false,
+    );
+  }
+  assert.deepEqual(
+    checklistFormSchema.parse({ title: 'Магазин', group_id: 'family' }),
+    { title: 'Магазин', group_id: 'family' },
+  );
+});
 
 test('credentials enforce backend lengths without trimming credentials', () => {
   assert.equal(

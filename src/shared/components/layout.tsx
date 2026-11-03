@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { LayoutList, LogOut, UsersRound } from 'lucide-react';
+import { LayoutList, ListChecks, LogOut, UsersRound } from 'lucide-react';
 import { NavLink, Outlet, useNavigate } from 'react-router';
 import { toast } from 'sonner';
 
@@ -77,6 +77,7 @@ function MobileNavigation() {
     >
       {[
         { to: '/tasks', label: 'Задачи', icon: LayoutList },
+        { to: '/checklists', label: 'Чеклисты', icon: ListChecks },
         { to: '/groups', label: 'Группы', icon: UsersRound },
       ].map(({ to, label, icon: Icon }) => (
         <NavLink

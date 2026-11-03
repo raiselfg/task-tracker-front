@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import {
   ChevronRight,
   LayoutList,
+  ListChecks,
   LoaderCircle,
   LogOut,
   UsersRound,
@@ -34,6 +35,7 @@ export function DashboardSidebar({
       <nav className='space-y-1 py-6' aria-label='Основная навигация'>
         {[
           { to: '/tasks', label: 'Задачи', icon: LayoutList },
+          { to: '/checklists', label: 'Чеклисты', icon: ListChecks },
           { to: '/groups', label: 'Группы', icon: UsersRound },
         ].map(({ to, label, icon: Icon }) => (
           <NavLink

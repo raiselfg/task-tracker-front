@@ -12,6 +12,8 @@ const fieldNames: Record<string, string> = {
 };
 
 const details: Record<string, string> = {
+  'Checklist not found': 'Чеклист недоступен.',
+  'Checklist item not found': 'Пункт удалён. Обновите чеклист.',
   'CSRF validation failed': 'Не удалось проверить запрос. Повторите действие.',
   'Invalid login or password': 'Неверный логин или пароль.',
   'Login already taken': 'Этот логин уже занят. Выберите другой.',

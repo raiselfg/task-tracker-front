@@ -31,6 +31,10 @@ test('initial 401 finishes session loading and clears private data without cance
 });
 
 test('logout/account change removes all previous private queries', () => {
+  queryClient.setQueryData(['checklists', {}], [{ id: 'old-checklist' }]);
+  queryClient.setQueryData(['checklist', 'old-checklist'], {
+    items: [{ title: 'Private item' }],
+  });
   queryClient.setQueryData(
     ['tasks', { group_id: 'old-group' }],
     [{ id: 'old-task' }],

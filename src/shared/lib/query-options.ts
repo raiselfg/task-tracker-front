@@ -1,4 +1,5 @@
 import { queryOptions } from '@tanstack/react-query';
+import { checklistApi } from '../../checklists/lib/checklists.ts';
 import { groupApi } from '../../groups/lib/groups.ts';
 import { taskApi } from '../../tasks/lib/tasks.ts';
 import type { TaskFilters } from '../../tasks/lib/types.ts';
@@ -17,6 +18,22 @@ export const groupQueries = {
 };
 
 export const sessionOptions = queryOptions(sessionQuery);
+export const checklistQueries = {
+  all: ['checklists'] as const,
+  detail: (id: string) => ['checklist', id] as const,
+};
+export const checklistOptions = {
+  list: (filters: { group_id?: string } = {}) =>
+    queryOptions({
+      queryKey: [...checklistQueries.all, filters],
+      queryFn: ({ signal }) => checklistApi.list(filters, signal),
+    }),
+  detail: (id: string) =>
+    queryOptions({
+      queryKey: checklistQueries.detail(id),
+      queryFn: ({ signal }) => checklistApi.detail(id, signal),
+    }),
+};
 export const taskOptions = {
   list: (filters: TaskFilters = {}) =>
     queryOptions({
