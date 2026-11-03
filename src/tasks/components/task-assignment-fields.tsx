@@ -86,63 +86,65 @@ export function TaskAssignmentFields({
           <QueryWarning message='У вас больше нет доступа к этой группе.' />
         )}
       </Field>
-      <Field>
-        <FieldLabel htmlFor='task-assignee'>Исполнитель</FieldLabel>
-        <Controller
-          name='assignee_id'
-          control={form.control}
-          render={({ field }) => (
-            <Select
-              {...field}
-              id='task-assignee'
-              disabled={!!groupId && !members.isSuccess}
-            >
-              <option value=''>Не назначена</option>
-              {people.map((person) => (
-                <option key={person.id} value={person.id}>
-                  {person.login}
-                  {person.id === user?.id ? ' (я)' : ''}
-                </option>
-              ))}
-              {assigneeId &&
-                !people.some((person) => person.id === assigneeId) && (
-                  <option value={assigneeId}>
-                    {members.isPending
-                      ? 'Загружаем исполнителя…'
-                      : members.isError
-                        ? 'Исполнитель недоступен'
-                        : 'Бывший участник'}
+      {(editing || !!groupId) && (
+        <Field>
+          <FieldLabel htmlFor='task-assignee'>Исполнитель</FieldLabel>
+          <Controller
+            name='assignee_id'
+            control={form.control}
+            render={({ field }) => (
+              <Select
+                {...field}
+                id='task-assignee'
+                disabled={!!groupId && !members.isSuccess}
+              >
+                <option value=''>Не назначена</option>
+                {people.map((person) => (
+                  <option key={person.id} value={person.id}>
+                    {person.login}
+                    {person.id === user?.id ? ' (я)' : ''}
                   </option>
-                )}
-            </Select>
-          )}
-        />
-        <p
-          className='text-sm leading-[1.7] text-muted-foreground font-normal'
-          data-field-hint
-        >
-          {groupId
-            ? 'Любой из участников группы.'
-            : 'Можно назначить только себе.'}
-        </p>
-        {groupId && members.isPending && (
+                ))}
+                {assigneeId &&
+                  !people.some((person) => person.id === assigneeId) && (
+                    <option value={assigneeId}>
+                      {members.isPending
+                        ? 'Загружаем исполнителя…'
+                        : members.isError
+                          ? 'Исполнитель недоступен'
+                          : 'Бывший участник'}
+                    </option>
+                  )}
+              </Select>
+            )}
+          />
           <p
             className='text-sm leading-[1.7] text-muted-foreground font-normal'
             data-field-hint
-            role='status'
           >
-            Загружаем участников…
+            {groupId
+              ? 'Любой из участников группы.'
+              : 'Можно назначить только себе.'}
           </p>
-        )}
-        {members.isError && (
-          <QueryWarning
-            message='Участники недоступны.'
-            retry={() => {
-              void members.refetch();
-            }}
-          />
-        )}
-      </Field>
+          {groupId && members.isPending && (
+            <p
+              className='text-sm leading-[1.7] text-muted-foreground font-normal'
+              data-field-hint
+              role='status'
+            >
+              Загружаем участников…
+            </p>
+          )}
+          {members.isError && (
+            <QueryWarning
+              message='Участники недоступны.'
+              retry={() => {
+                void members.refetch();
+              }}
+            />
+          )}
+        </Field>
+      )}
     </div>
   );
 }

@@ -30,7 +30,7 @@ export function Layout() {
   });
 
   return (
-    <div className='min-h-dvh pb-[calc(68px+env(safe-area-inset-bottom))] min-[681px]:pb-0'>
+    <div className='min-h-dvh'>
       <a
         className='fixed -top-24 left-4 z-50 rounded-lg bg-card p-3 focus:top-2'
         href='#main-content'
@@ -42,7 +42,7 @@ export function Layout() {
         isLoggingOut={logout.isPending}
         onLogout={() => logout.mutate()}
       />
-      <div className='flex min-h-dvh min-w-0 flex-col min-[681px]:ml-64'>
+      <div className='flex min-h-dvh min-w-0 flex-col pb-[calc(68px+env(safe-area-inset-bottom))] min-[681px]:ml-64 min-[681px]:pb-0'>
         <header className='flex items-center justify-between gap-4 border-b px-5 pt-[calc(env(safe-area-inset-top)+12px)] pb-3 min-[681px]:hidden'>
           <Brand />
           <Button
@@ -75,7 +75,7 @@ export function Layout() {
 function MobileNavigation() {
   return (
     <nav
-      className='fixed inset-x-0 bottom-0 z-30 flex border-t bg-card pb-[env(safe-area-inset-bottom)] min-[681px]:hidden'
+      className='fixed inset-x-0 bottom-0 z-30 flex border-t bg-card min-[681px]:hidden'
       aria-label='Основная навигация на телефоне'
     >
       {[
@@ -85,7 +85,7 @@ function MobileNavigation() {
         <NavLink
           key={to}
           to={to}
-          className='flex min-h-17 flex-1 flex-col items-center justify-center gap-1 text-xs font-medium text-muted-foreground [&.active]:bg-primary/5 [&.active]:text-primary'
+          className='flex min-h-[calc(68px+env(safe-area-inset-bottom))] flex-1 flex-col items-center justify-center gap-1 pb-[env(safe-area-inset-bottom)] text-xs font-medium text-muted-foreground [&.active]:bg-primary/5 [&.active]:text-primary'
         >
           <Icon size={21} />
           <span>{label}</span>
