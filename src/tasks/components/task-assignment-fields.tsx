@@ -55,16 +55,6 @@ export function TaskAssignmentFields({
             </Select>
           )}
         />
-        <p
-          className='text-sm leading-[1.7] text-muted-foreground font-normal'
-          data-field-hint
-        >
-          {editing
-            ? 'Принадлежность созданной задачи не меняется.'
-            : groupId
-              ? 'Задачу видят все участники группы.'
-              : 'Личную задачу видите только вы.'}
-        </p>
         {groups.isPending && (
           <p
             className='text-sm leading-[1.7] text-muted-foreground font-normal'
@@ -118,14 +108,6 @@ export function TaskAssignmentFields({
               </Select>
             )}
           />
-          <p
-            className='text-sm leading-[1.7] text-muted-foreground font-normal'
-            data-field-hint
-          >
-            {groupId
-              ? 'Любой из участников группы.'
-              : 'Можно назначить только себе.'}
-          </p>
           {groupId && members.isPending && (
             <p
               className='text-sm leading-[1.7] text-muted-foreground font-normal'

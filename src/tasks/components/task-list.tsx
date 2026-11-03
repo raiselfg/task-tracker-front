@@ -141,13 +141,9 @@ export function TaskList({ groupId }: { groupId?: string }) {
           />
         ) : !displayed.length ? (
           <EmptyState
-            title={
-              activeFilters ? 'Таких задач пока нет' : 'Место для ваших планов'
-            }
+            title={activeFilters ? 'Задачи не найдены' : 'Нет задач'}
             description={
-              activeFilters
-                ? 'Попробуйте другие фильтры или сбросьте их.'
-                : 'Добавьте первое дело. Маленький шаг — уже начало.'
+              activeFilters ? 'Измените или сбросьте фильтры.' : undefined
             }
             action={
               !activeFilters && (

@@ -35,7 +35,7 @@ export function GroupCard({
       </h2>
       <div className='text-xs text-muted-foreground flex flex-wrap justify-between gap-2.5 mt-[21px] max-[680px]:mt-[15px]'>
         <span>
-          {group.owner_id === currentUserId ? 'Вы — владелец' : 'Вы — участник'}
+          {group.owner_id === currentUserId ? 'Владелец' : 'Участник'}
         </span>
         <span>
           с{' '}

@@ -15,11 +15,7 @@ export function NewTaskPage() {
       <BackLink to={group ? `/groups/${group}` : '/tasks'}>
         {group ? 'К группе' : 'К задачам'}
       </BackLink>
-      <PageHeader
-        eyebrow='МАЛЕНЬКИЙ ШАГ К БОЛЬШЕМУ'
-        title='Новая задача'
-        description='Освободите голову. Запишите то, что важно.'
-      />
+      <PageHeader title='Новая задача' />
       <TaskForm initialGroupId={group} />
     </div>
   );
@@ -46,11 +42,7 @@ export function TaskPage({ edit = false }: { edit?: boolean }) {
     return (
       <div className='max-w-215 my-0 mx-auto'>
         <BackLink to={`/tasks/${id}`}>К задаче</BackLink>
-        <PageHeader
-          eyebrow='ДЕТАЛИ ИМЕЮТ ЗНАЧЕНИЕ'
-          title='Редактирование'
-          description='Автор и принадлежность задачи сохранятся.'
-        />
+        <PageHeader title='Редактирование' />
         <TaskForm key={id} task={task.data} />
       </div>
     );

@@ -113,7 +113,7 @@ export function EmptyState({
   completed = false,
 }: {
   title: string;
-  description: string;
+  description?: string;
   action?: ReactNode;
   completed?: boolean;
 }) {
@@ -124,9 +124,11 @@ export function EmptyState({
         <Icon size={30} strokeWidth={1.5} />
       </span>
       <h2>{title}</h2>
-      <p className='text-muted-foreground text-sm leading-[1.8] max-w-85'>
-        {description}
-      </p>
+      {description && (
+        <p className='text-muted-foreground text-sm leading-[1.8] max-w-85'>
+          {description}
+        </p>
+      )}
       {action}
     </div>
   );

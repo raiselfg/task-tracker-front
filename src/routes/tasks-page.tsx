@@ -15,9 +15,7 @@ export function TasksPage() {
   return (
     <>
       <PageHeader
-        eyebrow='ЛИЧНОЕ И ОБЩЕЕ'
-        title='Ваши задачи'
-        description='Для себя, для семьи, для всего важного.'
+        title='Задачи'
         action={
           <>
             <Button asChild className='shadow-sm max-[680px]:w-full'>

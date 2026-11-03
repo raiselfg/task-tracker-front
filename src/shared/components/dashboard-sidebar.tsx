@@ -52,7 +52,7 @@ export function DashboardSidebar({
       </nav>
       <div className='min-h-0 flex-1 overflow-y-auto'>
         <h2 className='mb-3 px-3 text-xs font-bold tracking-widest text-muted-foreground'>
-          МОИ ГРУППЫ
+          Группы
         </h2>
         {groups.isPending ? (
           <p className='px-3 text-sm text-muted-foreground' role='status'>
@@ -85,7 +85,7 @@ export function DashboardSidebar({
           ))
         ) : (
           <p className='px-3 text-sm leading-relaxed text-muted-foreground'>
-            Создайте группу, чтобы разделить дела с близкими.
+            Нет групп
           </p>
         )}
       </div>
@@ -100,7 +100,6 @@ export function DashboardSidebar({
           <p className='truncate text-sm font-semibold' title={user?.login}>
             {user?.login}
           </p>
-          <p className='text-xs text-muted-foreground'>Личный аккаунт</p>
         </div>
         <Button
           variant='ghost'

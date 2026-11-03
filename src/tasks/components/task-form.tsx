@@ -91,11 +91,6 @@ export function TaskForm({
         <TaskContentFields form={form} />
         <TaskAssignmentFields form={form} editing={!!original} />
         <TaskWorkflowFields form={form} editing={!!original} />
-        {!original && (
-          <p className='flex items-center gap-[9px] text-muted-foreground text-sm leading-[1.7] bg-muted rounded-[10px] py-3 px-3.5'>
-            Новая задача появится со статусом «Открыта».
-          </p>
-        )}
         <FormError error={mutation.error} />
         <div className='flex justify-end items-center gap-2.5 border-t border-t-border pt-[23px] mt-[5px] max-[680px]:flex-wrap max-[680px]:[&>a]:flex-1'>
           <Button

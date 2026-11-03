@@ -29,14 +29,9 @@ export function AuthPage({ register = false }: { register?: boolean }) {
     <main className='flex min-h-dvh flex-col items-center justify-center gap-8 bg-muted/30 px-5 py-10'>
       <Brand />
       <Card className='w-full max-w-md'>
-        <h1 className='text-2xl font-black tracking-tight'>
-          {register ? 'Создать аккаунт' : 'Вход в Рядом'}
+        <h1 className='mb-6 text-2xl font-black tracking-tight'>
+          {register ? 'Регистрация' : 'Вход'}
         </h1>
-        <p className='mt-2 mb-6 text-sm leading-relaxed text-muted-foreground'>
-          {register
-            ? 'Личные задачи и общие планы в одном месте.'
-            : 'Войдите, чтобы вернуться к своим делам.'}
-        </p>
         {params.has('registered') && !register && (
           <div
             className='mb-5 flex items-start gap-2 rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-800'
@@ -54,7 +49,6 @@ export function AuthPage({ register = false }: { register?: boolean }) {
         )}
         <AuthForm register={register} returnTo={returnTo} />
         <p className='mt-6 text-center text-sm text-muted-foreground'>
-          {register ? 'Уже есть аккаунт?' : 'Пока нет аккаунта?'}{' '}
           <Link
             className='font-medium text-foreground underline underline-offset-4'
             to={`/${register ? 'login' : 'register'}?returnTo=${encodeURIComponent(returnTo)}`}
@@ -63,11 +57,6 @@ export function AuthPage({ register = false }: { register?: boolean }) {
           </Link>
         </p>
       </Card>
-      <p className='text-center text-xs leading-relaxed text-muted-foreground'>
-        Личные задачи — только для вас.
-        <br />
-        Общие — для участников группы.
-      </p>
     </main>
   );
 }

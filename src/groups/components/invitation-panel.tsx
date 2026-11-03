@@ -40,12 +40,12 @@ export function InvitationPanel({ groupId }: { groupId: string }) {
         <Link2 size={24} />
       </span>
       <h2 className='text-lg font-medium mb-3 tracking-[-0.3px]'>
-        Пригласите близких
+        Приглашение
       </h2>
-      <p>
-        Одна ссылка для всех. Приглашение многоразовое и без срока действия.
+      <p className='mb-4'>
+        Ссылка многоразовая, без срока действия.
       </p>
-      {link ? (
+      {link && (
         <div className='flex flex-col gap-2.5 my-[21px] mx-0'>
           <FieldLabel htmlFor='invitation-url'>Ссылка-приглашение</FieldLabel>
           <Input
@@ -76,14 +76,9 @@ export function InvitationPanel({ groupId }: { groupId: string }) {
             className='text-sm leading-[1.7] text-muted-foreground font-normal'
             data-field-hint
           >
-            Сохраните ссылку: после ухода со страницы она больше не
-            отображается.
+            Скопируйте ссылку до ухода со страницы.
           </p>
         </div>
-      ) : (
-        <p className='mt-3.5 mr-0 mb-4.5 ml-0'>
-          Создайте ссылку и отправьте её тем, кого хотите видеть в группе.
-        </p>
       )}
       <Button
         variant={link ? 'outline' : 'default'}
@@ -102,12 +97,6 @@ export function InvitationPanel({ groupId }: { groupId: string }) {
         )}
         {link ? 'Создать другую ссылку' : 'Создать ссылку'}
       </Button>
-      <p
-        className='text-sm leading-[1.7] text-muted-foreground font-normal mt-2.5 text-center'
-        data-field-hint
-      >
-        Новая ссылка сразу заменяет предыдущую.
-      </p>
       <button
         className='block min-h-11 mt-[5px] mr-auto -mb-[5px] ml-auto text-muted-foreground underline text-xs'
         disabled={create.isPending || revoke.isPending}

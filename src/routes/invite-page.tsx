@@ -1,7 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import {
   ArrowRight,
-  Check,
   Link2Off,
   LoaderCircle,
   UsersRound,
@@ -46,9 +45,6 @@ export function InvitePage() {
             <UsersRound size={34} strokeWidth={1.5} />
           )}
         </span>
-        <span className='block text-muted-foreground text-xs font-semibold tracking-[1.7px] mb-[13px] max-[680px]:text-[9px] max-[680px]:tracking-[1.6px] max-[680px]:mb-2.5'>
-          {invalid ? 'ССЫЛКА НЕ ДЕЙСТВУЕТ' : 'ВАС ПРИГЛАСИЛИ'}
-        </span>
         <h1 className='text-[27px] font-medium tracking-[-0.5px] mb-[17px] wrap-anywhere max-[680px]:text-[24px]'>
           {invalid
             ? 'Приглашение недоступно'
@@ -56,8 +52,7 @@ export function InvitePage() {
         </h1>
         {invalid ? (
           <p>
-            Ссылку отозвали или заменили, либо группа была удалена. Попросите
-            владельца прислать новое приглашение.
+            Попросите владельца группы прислать новую ссылку.
           </p>
         ) : invitation.isError ? (
           <>
@@ -73,21 +68,6 @@ export function InvitePage() {
           </>
         ) : (
           <>
-            <p>
-              Присоединитесь к группе, чтобы вместе
-              <br className='max-[680px]:hidden' /> создавать, распределять и
-              выполнять задачи.
-            </p>
-            <div className='grid gap-[13px] text-left text-xs text-muted-foreground my-7 mx-0'>
-              <span className='flex items-center gap-2.5'>
-                <Check size={17} />
-                Общие задачи в одном месте
-              </span>
-              <span className='flex items-center gap-2.5'>
-                <Check size={17} />
-                Каждый может помочь с любым делом
-              </span>
-            </div>
             <FormError error={accept.error} />
             <Button
               className='w-full'
@@ -102,12 +82,6 @@ export function InvitePage() {
               Вступить
               <ArrowRight />
             </Button>
-            <p
-              className='text-sm leading-[1.7] text-muted-foreground font-normal mt-3'
-              data-field-hint
-            >
-              Вы вступите только после нажатия кнопки.
-            </p>
           </>
         )}
         <Button variant='ghost' className='mt-4' asChild>

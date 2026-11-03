@@ -16,7 +16,6 @@ import { Button } from '@/shared/components/ui/button';
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogTitle,
 } from '@/shared/components/ui/dialog';
 import { Field, FieldError, FieldLabel } from '@/shared/components/ui/field';
@@ -54,11 +53,8 @@ export function CreateGroupDialog({ children }: { children: ReactNode }) {
       }}
     >
       {children}
-      <DialogContent>
+      <DialogContent aria-describedby={undefined}>
         <DialogTitle>Новая группа</DialogTitle>
-        <DialogDescription>
-          Дайте название вашему общему пространству.
-        </DialogDescription>
         <form
           className='mt-5'
           data-dirty={form.formState.isDirty}

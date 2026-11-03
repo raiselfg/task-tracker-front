@@ -73,7 +73,7 @@ export function PwaControls() {
     <>
       {!installed && (
         <button
-          className='relative flex w-fit mt-2 mr-[25px] mb-4.5 ml-auto items-center gap-[7px] text-xs text-muted-foreground min-h-11 p-2 rounded-[9px] max-[680px]:mt-0 max-[680px]:mr-5 max-[680px]:mb-[calc(85px_+_env(safe-area-inset-bottom))] max-[680px]:ml-auto'
+          className='relative flex w-fit mt-2 mr-[25px] mb-4.5 ml-auto items-center gap-[7px] text-xs text-muted-foreground min-h-11 p-2 rounded-[9px] max-[680px]:mt-0 max-[680px]:mr-5 max-[680px]:mb-[calc(69px_+_env(safe-area-inset-bottom))] max-[680px]:ml-auto'
           data-install-button
           onClick={() => {
             void install().catch(() => setInstructions(true));
@@ -85,7 +85,7 @@ export function PwaControls() {
       )}
       {needRefresh && (
         <aside
-          className='fixed bottom-6 left-1/2 -translate-x-1/2 z-45 max-w-150 w-[calc(100%_-_32px)] bg-card border border-border rounded-[15px] p-[15px] shadow-sm flex items-center gap-[13px] max-[680px]:bottom-[calc(85px_+_env(safe-area-inset-bottom))] max-[680px]:gap-2 max-[680px]:p-3 max-[680px]:flex-wrap'
+          className='fixed bottom-6 left-1/2 -translate-x-1/2 z-45 max-w-150 w-[calc(100%_-_32px)] bg-card border border-border rounded-[15px] p-[15px] shadow-sm flex items-center gap-[13px] max-[680px]:bottom-[calc(69px_+_env(safe-area-inset-bottom))] max-[680px]:gap-2 max-[680px]:p-3 max-[680px]:flex-wrap'
           role='status'
         >
           <RefreshCw
@@ -96,9 +96,6 @@ export function PwaControls() {
             <strong className='text-sm font-semibold max-[680px]:text-xs'>
               Доступна новая версия
             </strong>
-            <p className='text-xs leading-[1.6] text-muted-foreground mt-1 max-[680px]:text-[9px]'>
-              Закончите заполнение формы и обновите приложение.
-            </p>
           </div>
           <Button
             className='max-[680px]:min-h-10 max-[680px]:text-xs max-[680px]:p-[9px]'
@@ -113,26 +110,20 @@ export function PwaControls() {
         </aside>
       )}
       <Dialog open={instructions} onOpenChange={setInstructions}>
-        <DialogContent>
-          <DialogTitle>Рядом на вашем устройстве</DialogTitle>
-          <DialogDescription>
-            Установите приложение средствами браузера. Оно будет открываться в
-            отдельном окне.
-          </DialogDescription>
+        <DialogContent aria-describedby={undefined}>
+          <DialogTitle>Установка приложения</DialogTitle>
           <ol className='mt-5.5 mr-0 mb-0 ml-0 p-0 list-none grid gap-5 text-sm leading-[1.8] text-muted-foreground'>
             <li className='flex gap-3'>
               <Download className='shrink-0 mt-[3px]' size={19} />
               <span>
-                На компьютере найдите значок установки в адресной строке или
-                пункт «Установить приложение» в меню браузера.
+                Компьютер: «Установить приложение» в меню браузера.
               </span>
             </li>
             <li className='flex gap-3'>
               <Share className='shrink-0 mt-[3px]' size={19} />
               <span>
-                На iPhone или iPad откройте сайт в Safari: «Поделиться» → «На
-                экран Домой». На Android — «Установить приложение» в меню
-                браузера.
+                iPhone/iPad: Safari → «Поделиться» → «На экран Домой».
+                Android: меню браузера → «Установить приложение».
               </span>
             </li>
           </ol>
@@ -142,8 +133,7 @@ export function PwaControls() {
         <DialogContent>
           <DialogTitle>Обновить приложение?</DialogTitle>
           <DialogDescription>
-            В открытой форме есть несохранённые изменения. При обновлении они
-            пропадут. Вы можете вернуться к форме и закончить её заполнение.
+            Обновление удалит несохранённые изменения формы.
           </DialogDescription>
           <div className='flex justify-end gap-2 mt-[25px] flex-wrap'>
             <Button variant='outline' onClick={() => setConfirmUpdate(false)}>
@@ -175,19 +165,9 @@ export function OfflineScreen() {
       <span className='w-18.5 h-18.5 grid place-items-center rounded-[22px] bg-muted text-muted-foreground mb-[5px]'>
         <WifiOff size={32} />
       </span>
-      <span className='block text-muted-foreground text-xs font-semibold tracking-[1.7px] mb-[13px] max-[680px]:text-[9px] max-[680px]:tracking-[1.6px] max-[680px]:mb-2.5 mt-[25px]'>
-        НЕМНОГО ТИШИНЫ
-      </span>
       <h1 className='text-[29px] font-medium tracking-[-0.7px]'>
         Нет соединения
       </h1>
-      <p className='text-muted-foreground text-sm leading-[2] mt-5'>
-        Для задач и групп нужен интернет.
-        <br />
-        Вернём вас к делам, когда сеть появится.
-        <br />
-        Поля открытой формы сохранятся на этом экране.
-      </p>
       <span className='flex items-center gap-2 mt-[35px] text-muted-foreground text-xs'>
         <span className='w-1.5 h-1.5 rounded-full bg-muted animate-pulse' />
         Ожидаем подключения

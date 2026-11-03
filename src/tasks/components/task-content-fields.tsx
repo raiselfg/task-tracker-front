@@ -25,7 +25,6 @@ export function TaskContentFields({
           id='task-title'
           {...form.register('title')}
           required
-          placeholder='Что нужно сделать?'
           autoFocus
           aria-invalid={!!errors.title}
           aria-describedby={errors.title ? 'task-title-error' : undefined}
@@ -42,7 +41,6 @@ export function TaskContentFields({
         <Textarea
           id='task-description'
           {...form.register('description')}
-          placeholder='Детали, которые помогут выполнить задачу'
           rows={4}
         />
       </Field>

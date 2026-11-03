@@ -42,7 +42,7 @@ export function Layout() {
         isLoggingOut={logout.isPending}
         onLogout={() => logout.mutate()}
       />
-      <div className='flex min-h-dvh min-w-0 flex-col pb-[calc(68px+env(safe-area-inset-bottom))] min-[681px]:ml-64 min-[681px]:pb-0'>
+      <div className='flex min-h-dvh min-w-0 flex-col pb-[calc(52px+env(safe-area-inset-bottom))] min-[681px]:ml-64 min-[681px]:pb-0'>
         <header className='flex items-center justify-between gap-4 border-b px-5 pt-[calc(env(safe-area-inset-top)+12px)] pb-3 min-[681px]:hidden'>
           <Brand />
           <Button
@@ -63,9 +63,6 @@ export function Layout() {
         >
           <Outlet />
         </main>
-        <footer className='border-t px-5 py-5 text-xs text-muted-foreground sm:px-8 lg:px-10'>
-          Рядом — личные дела и общие планы
-        </footer>
       </div>
       <MobileNavigation />
     </div>
@@ -85,9 +82,9 @@ function MobileNavigation() {
         <NavLink
           key={to}
           to={to}
-          className='flex min-h-[calc(68px+env(safe-area-inset-bottom))] flex-1 flex-col items-center justify-center gap-1 pb-[env(safe-area-inset-bottom)] text-xs font-medium text-muted-foreground [&.active]:bg-primary/5 [&.active]:text-primary'
+          className='flex min-h-[calc(52px+env(safe-area-inset-bottom))] flex-1 flex-col items-center justify-center gap-0.5 pb-[env(safe-area-inset-bottom)] text-[11px] font-medium text-muted-foreground [&.active]:bg-primary/5 [&.active]:text-primary'
         >
-          <Icon size={21} />
+          <Icon size={18} />
           <span>{label}</span>
         </NavLink>
       ))}

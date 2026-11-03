@@ -83,9 +83,6 @@ function AppContent() {
                 element={
                   <div className='min-h-60 py-[45px] px-5 flex items-center justify-center flex-col gap-3.5 text-center [&_h1]:text-[27px] [&_h1]:font-semibold [&_h2]:text-lg [&_h2]:font-medium [&_h2]:tracking-[-0.3px]'>
                     <h1>Страница не найдена</h1>
-                    <p className='text-muted-foreground text-sm leading-[1.8] max-w-85'>
-                      Возможно, адрес изменился.
-                    </p>
                     <Button asChild>
                       <Link to='/tasks'>К задачам</Link>
                     </Button>

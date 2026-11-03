@@ -30,7 +30,7 @@ export default defineConfig(({ mode, isPreview }) => {
           id: '/',
           name: 'Рядом — личные и семейные задачи',
           short_name: 'Рядом',
-          description: 'Личные дела и общие планы в одном месте.',
+          description: 'Личные и семейные задачи.',
           lang: 'ru',
           start_url: '/tasks',
           scope: '/',

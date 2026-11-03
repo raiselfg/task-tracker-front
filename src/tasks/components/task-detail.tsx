@@ -28,18 +28,12 @@ export function TaskDetail({
         {task.group_id ? 'К группе' : 'К задачам'}
       </BackLink>
       <PageHeader
-        eyebrow={
-          <> {completed ? 'ЕЩЁ ОДНО ДЕЛО ПОЗАДИ' : 'ОДНО ДЕЛО ЗА ДРУГИМ'} </>
-        }
         title={task.title}
         action={
           <>
             {!completed && (
               <Button variant='outline' asChild>
-                <Link
-                  className='mt-[27px] max-[680px]:mt-0'
-                  to={`/tasks/${task.id}/edit`}
-                >
+                <Link to={`/tasks/${task.id}/edit`}>
                   <Pencil />
                   Редактировать
                 </Link>
@@ -60,8 +54,8 @@ export function TaskDetail({
           <div>
             <strong className='text-sm font-semibold'>Задача выполнена</strong>
             <p className='text-xs leading-[1.7] text-muted-foreground mt-1 max-[680px]:text-xs'>
-              {redirectedFromEdit ? 'Эту задачу уже выполнили. ' : ''}Доступен
-              только просмотр. Изменить, удалить или открыть её заново нельзя.
+              {redirectedFromEdit ? 'Задачу уже выполнили. ' : ''}Только
+              просмотр. Изменение, удаление и повторное открытие недоступны.
             </p>
           </div>
           <LockKeyhole

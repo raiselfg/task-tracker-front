@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { Crown, ShieldCheck, UsersRound } from 'lucide-react';
+import { Crown, UsersRound } from 'lucide-react';
 
 import { RemoveGroupMemberButton } from '@/groups/components/remove-group-member-button';
 import type { Group } from '@/groups/lib/types';
@@ -37,10 +37,7 @@ export function GroupMembers({
           }}
         />
       ) : !members.data.length ? (
-        <EmptyState
-          title='Участники не найдены'
-          description='Обновите страницу, чтобы проверить состав группы.'
-        />
+        <EmptyState title='Участники не найдены' />
       ) : (
         <ul className='mt-4 mr-0 mb-0 ml-0 p-0 list-none'>
           {members.data.map((member) => (
@@ -82,13 +79,6 @@ export function GroupMembers({
           ))}
         </ul>
       )}
-      <p
-        className='text-sm leading-[1.7] text-muted-foreground font-normal flex gap-1.5 mt-[17px] pt-[17px] border-t border-t-border'
-        data-field-hint
-      >
-        <ShieldCheck className='shrink-0' size={15} />
-        Каждый участник может работать с общими задачами.
-      </p>
     </Card>
   );
 }
